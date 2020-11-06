@@ -1,6 +1,10 @@
 // 此文件用于定义设备模型,但是这一个模型一次只能是生成一条指令去设定
 
-
+const gpio = require('./gpio');
+/** 模型,只做相关指令生成的操作,类似指令表,
+ * 实例则只需要根据此函数来获取数据进行发送
+ * 
+ */
 let orangePiGpio = {
     sign: 'orangePiGpio',
     title: '鲜橙派Gpio',
@@ -15,8 +19,6 @@ let orangePiGpio = {
             通过http请求来进行连接
             串口进行连接...暂时不会等后面更新
         */
-
-
         /** 控制函数
          * 
          */
