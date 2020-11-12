@@ -70,3 +70,11 @@ let orangePiGpio = {
         }
     }
 }
+
+/**
+ * 
+ * @param {*} a 
+ */
+function A(a) {
+
+}

@@ -5,6 +5,7 @@
 let module = {
     title: '时序电源',
     sign: `测试用时序电源`,
+    // 指令集
     instruction: {
         /** 设置状态的函数
          * 传入自定义的参数,返回两个数据
@@ -55,20 +56,31 @@ let module = {
 
         /** 状态获取操作
          * 
-         * @param {*} obj 
+         * 根据参数获取状态,支持数字字符串或者数组
          */
-        getState(obj) {
-            //根据参数获取状态
-            /** 设备地址 */
+        getState(arg) {
+            //数据处理
+            // let queryAside = []
+            let arg = until.tool
+                /** 设备地址 */
             let address = this.address;
             /** 通道参数 */
             let requestData = `0${address} 02 20 16 00 00 00 00`;
-            return function() {
+            return new Promise(
+                (resolve, reject) => {
+                    // 返回一个对象,包含用来查询的指令以及用来处理结果的回调函数
+                    //返回一个回调函数,在这个回调函数里面进行数据比对
+                    let cb = function(response) {
+                        //根据返回值来对比数据是否符合当前查询的值
 
-            }
+                    }
+                }
+            )
+
         }
     }
 }
+
 
 
 /** 实例数据 */
@@ -80,6 +92,7 @@ let one = {
     protocol: {
         // 连接协议 udp客户端
         type: 'udp-client',
+        //连接参数
         options: {
             ip: '127.0.0.1',
             port: '59999'
